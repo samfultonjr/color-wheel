@@ -1,16 +1,42 @@
-@theme_Blue: #43a1cd;
-@theme_Green: #639b47;
-@theme_LightGreen: #9ac147;
-@theme_Yellow: #e1e23b;
-@theme_Orange: #f7941e;
-@theme_Rust: #ba3e2e;
-@theme_Red: #9a1d34;
-@theme_Purple: #662a6c;
-@theme_Violet: #272b66;
-@theme_Indigo: #2d559f;
-@theme_b: #333;
+@red: rgb(255, 0, 0);
+@red-violet: rgb(255, 0, 149);
+@violet: rgb(172, 0, 252);
+@blue-violet: rgb(109, 0, 252);
+@blue: rgb(0, 0, 255);
+@blue-green: rgb(0, 183, 255);
+@green: green;
+@yellow-green: rgb(145, 255, 0);
+@yellow: yellow;
+@yellow-orange: rgb(255, 196, 0);
+@orange: rgb(253, 169, 0);
+@red-orange: rgb(255, 72, 0);
+@font-face {
+	font-family: "Gotham-Medium";
+	src: url('./fonts/Gotham-Medium.otf') format('opentype');
+  }
+  @font-face {
+	font-family: "Gotham-Light";
+	src: url('./fonts/Gotham-Light.otf') format('opentype');
+  }
+  @font-face {
+	font-family: "Gotham-Book";
+	src: url('./fonts/Gotham-Book.otf') format('opentype');
+  }
+  @font-face {
+	font-family: "NotoSansLinearB";
+	src: url('./fonts/NotoSansLinearB-Regular.ttf') format('truetype');
+  }
+  @font-face {
+	font-family: "Gotham-Bold";
+	src: url('./fonts/Gotham-Bold.otf') format('opentype');
+  }
+  @font-face {
+	font-family: "Gotham-LightItalic";
+	src: url('./fonts/Gotham-LightItalic.otf') format('opentype');
+  }
+  
 
-.transition(@speed: 0.1s, @easing: ease) {
+.transition(@speed: 0.5s, @easing: ease) {
 	-webkit-transition: all @speed @easing;
 	   -moz-transition: all @speed @easing;
 	    -ms-transition: all @speed @easing;
@@ -44,10 +70,10 @@
 
 body {
 	margin: 60px auto;
-	background: #F5F5F7;
+	background: transparent;
 }
 #colorWheel {
-  -webkit-animation: intro 3s ease;
+	-webkit-animation: fadein 2s;
 	height: 100px;
 	width: 100px;
 	margin: 0 auto ;
@@ -63,18 +89,18 @@ body {
 		border-style: solid;
 		border-width: 150px 50px;
 		box-sizing: border-box;
-		&.color01{.rotate(@deg * 0); .swatch(@theme_Blue);}
-		&.color02{.rotate(@deg * .833); .swatch(@theme_Green);}
-		&.color03{.rotate(@deg * 1.666); .swatch(@theme_LightGreen);}
-		&.color04{.rotate(@deg * 2.5); .swatch(@theme_Yellow);}
-		&.color05{.rotate(@deg * 3.333); .swatch(@theme_Orange);}
-		&.color06{.rotate(@deg * 4.1666); .swatch(@theme_Rust);}
-		&.color07{.rotate(@deg * 5); .swatch(@theme_Red);}
-		&.color08{.rotate(@deg * 5.8333); .swatch(@theme_Purple);}
-		&.color09{.rotate(@deg * 6.6666); .swatch(@theme_Violet);}
-		&.color10{.rotate(@deg * 7.5); .swatch(@theme_Indigo);}
-		&.color11{.rotate(@deg * 8.33333333333); .swatch(@theme_b);}
-		&.color12{.rotate(@deg * 9.16666); .swatch(@theme_b);}
+		&.color01{.rotate(@deg * 0); .swatch(@red);}
+		&.color02{.rotate(@deg * .833); .swatch(@red-violet);}
+		&.color03{.rotate(@deg * 1.666); .swatch(@violet);}
+		&.color04{.rotate(@deg * 2.5); .swatch(@blue-violet);}
+		&.color05{.rotate(@deg * 3.333); .swatch(@blue);}
+		&.color06{.rotate(@deg * 4.1666); .swatch(@blue-green);}
+		&.color07{.rotate(@deg * 5); .swatch(@green);}
+		&.color08{.rotate(@deg * 5.8333); .swatch(@yellow-green);}
+		&.color09{.rotate(@deg * 6.6666); .swatch(@yellow);}
+		&.color10{.rotate(@deg * 7.5); .swatch(@yellow-orange);}
+		&.color11{.rotate(@deg * 8.3333333333); .swatch(@orange);}
+		&.color12{.rotate(@deg * 9); .swatch(@red-orange);}
 	}
 	&:before {
 		content: "";
@@ -100,11 +126,52 @@ body {
 		background: fade(white,100%);
 }
   
-@-webkit-keyframes intro {
-  0% {.rotate(0)}
-  50% {.rotate(720deg)}
-  100% {.rotate(0)}
+  
+  
 }
-  
-  
+
+@-webkit-keyframes spin {
+0% {.rotate(0)}
+100% {.rotate(360deg)}
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+	to   { opacity: 1; }
+	0% {.rotate(0)}
+	100% {.rotate(360deg)}
+}
+
+@-webkit-keyframes justFade {
+    from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+
+.regenerate{
+	font-family: "Gotham-Book", Helvetica, Arial, serif;
+	font-weight: 600;
+	-webkit-animation: justFade .5s;
+	transition: background-color 1s;
+	border-radius: 100%;
+	border: none;
+	background-color: white;
+	color: rgb(96, 170, 243);
+	margin: 0 auto ;
+	position: relative;
+	height: 100px;
+	outline: none;
+	cursor: pointer;
+	margin-top: 100%;
+	z-index: 100;
+}
+
+.regenerate:hover{
+	transition: background-color .5s;
+	background-color: rgb(42, 142, 241);
+}
+
+
+.spinner{
+	-webkit-animation: spin 2s;
 }
