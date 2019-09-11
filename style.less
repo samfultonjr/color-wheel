@@ -71,6 +71,9 @@
 body {
 	margin: 60px auto;
 	background: transparent;
+	zoom: 2;
+    -moz-transform: scale(2);
+    -moz-transform-origin: 0 0;
 }
 #colorWheel {
 	-webkit-animation: fadein 3s;
@@ -156,7 +159,7 @@ body {
 	border-radius: 100%;
 	border: none;
 	background-color: white;
-	color: rgb(96, 170, 243);
+	color: rgba(96, 170, 243);
 	margin: 0 auto ;
 	position: relative;
 	height: 100px;
@@ -164,15 +167,19 @@ body {
 	cursor: pointer;
 	margin-top: 100%;
 	z-index: 100;
-	border: 2px solid rgb(96, 170, 243);
 }
 
 .regenerate:hover{
-	transition: background-color .5s;
-	background-color: rgb(42, 142, 241);
+	transition: background-color 5s;
+	transition: color 3s;
+	background-color: rgb(246, 247, 248);
 }
 
 
 .spinner{
 	-webkit-animation: spin 2s;
+}
+
+span{
+	transition: border-color 1.5s;
 }
